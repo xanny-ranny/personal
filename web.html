@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile</title>
+
+    <style>
+
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* =========================
+           PAGE BACKGROUND
+        ========================= */
+
+        body {
+            min-height: 100vh;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background-image: url("https://i.pinimg.com/1200x/44/1a/a7/441aa72bf5e168407a880cbbf3ff3f6c.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 15px;
+        }
+
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
+        .card {
+            width: 720px;
+            max-width: 100%;
+
+            background: #fffce9;
+
+            border: 8px solid #d9efd0;
+
+            border-radius: 45px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 0 0 3px #739653,
+                0 15px 35px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* =========================
+           TOP / HEADER
+        ========================= */
+
+        .top {
+            background:
+                repeating-linear-gradient(
+                    135deg,
+                    #e4a44e 0px,
+                    #e4a44e 10px,
+                    #dc9943 10px,
+                    #dc9943 13px
+                );
+
+            padding: 18px 20px 20px;
+
+            border-bottom: 4px solid #6e914e;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .nav a {
+            text-decoration: none;
+
+            color: #6c8640;
+
+            background: #fffde9;
+
+            padding: 10px 20px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+
+        .nav a:hover {
+            background: #dff1cf;
+
+            transform: translateY(-2px);
+        }
+
+
+        .credit {
+            margin-left: auto;
+
+            color: white;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           INFO AREA
+        ========================= */
+
+        .info-area {
+            display: grid;
+
+            grid-template-columns: 1fr 105px;
+
+            gap: 15px;
+
+            align-items: center;
+        }
+
+
+        .info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin: 7px 0;
+        }
+
+
+        .info label {
+            width: 75px;
+
+            color: white;
+
+            font-weight: 900;
+
+            font-size: 14px;
+        }
+
+
+        .bar {
+            flex: 1;
+
+            height: 30px;
+
+            background: #fffce8;
+
+            border: 2px solid #8caf5d;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .bar span {
+            display: block;
+
+            height: 100%;
+
+            padding: 5px 12px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    to right,
+                    #67983e 0%,
+                    #67983e 82%,
+                    #92c66a 82%,
+                    #92c66a 100%
+                );
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           PROFILE IMAGE
+        ========================= */
+
+        .profile-image {
+            width: 100px;
+
+            height: 100px;
+
+            border-radius: 50%;
+
+            background: #f6e6b7;
+
+            border: 5px solid white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 0 0 3px #9b8b5b;
+        }
+
+
+        .profile-image img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .content {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+
+            padding: 20px;
+        }
+
+
+        .left {
+            padding: 0 5px;
+        }
+
+
+        .right {
+            padding-top: 0;
+        }
+
+
+        /* =========================
+           ABOUT ME TITLE
+        ========================= */
+
+        .title {
+            font-size: 42px;
+
+            line-height: 0.9;
+
+            margin-bottom: 12px;
+
+            font-weight: 1000;
+
+            color: #b45d49;
+
+            letter-spacing: -2px;
+        }
+
+
+        .title span {
+            color: #75a84e;
+
+            font-style: italic;
+        }
+
+
+        /* =========================
+           SUBTITLE
+        ========================= */
+
+        .subtitle {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+
+            color: #b45d49;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .subtitle::before,
+        .subtitle::after {
+            content: "✦";
+
+            color: #ee8c65;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .description {
+            color: #6e7556;
+
+            font-size: 14px;
+
+            line-height: 1.45;
+
+            margin-bottom: 18px;
+        }
+
+
+        .description strong {
+            color: #73a04e;
+        }
+
+
+        .description a {
+            color: #6c9a47;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           IMAGE GALLERY
+        ========================= */
+
+        .gallery {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr 1fr;
+
+            gap: 8px;
+        }
+
+
+        /* BIG IMAGE */
+
+        .gallery .main-photo {
+            grid-column: 1 / 4;
+
+            height: 175px;
+        }
+
+
+        /* SMALL IMAGES */
+
+        .gallery .small-photo {
+            height: 105px;
+        }
+
+
+        .photo {
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            border: 4px solid #dda653;
+
+            background: #d6e5b9;
+        }
+
+
+        .photo img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: 0.3s;
+        }
+
+
+        .photo:hover img {
+            transform: scale(1.07);
+        }
+
+
+        /* =========================
+           DNI / BYF
+        ========================= */
+
+        .extra-section {
+            padding: 10px 25px 25px;
+
+            color: #6e7556;
+        }
+
+
+        .extra-section h2 {
+            margin-bottom: 8px;
+
+            font-size: 24px;
+        }
+
+
+        .dni-title {
+            color: #b45d49;
+        }
+
+
+        .interest-title {
+            color: #75a84e;
+        }
+
+
+        .extra-section p {
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           BOTTOM / SOCIAL AREA
+        ========================= */
+
+        .bottom {
+            background:
+                repeating-linear-gradient(
+                    -45deg,
+                    #8fc568 0px,
+                    #8fc568 9px,
+                    #82b85c 9px,
+                    #82b85c 14px
+                );
+
+            padding: 10px 20px 15px;
+
+            border-top: 3px solid #729b50;
+        }
+
+
+        .socials {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .social {
+            width: 55px;
+
+            height: 55px;
+
+            border-radius: 50%;
+
+            background: #fffce9;
+
+            border: 3px dotted #7eaa5b;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-decoration: none;
+
+            color: #75a74d;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .social:hover {
+            transform: translateY(-5px) rotate(-5deg);
+
+            background: #eaf7d8;
+        }
+
+
+        .find-me {
+            margin-left: auto;
+
+            color: white;
+
+            font-size: 29px;
+
+            font-weight: 1000;
+
+            text-transform: lowercase;
+        }
+
+
+        .arrows {
+            color: white;
+
+            font-size: 28px;
+
+            letter-spacing: -7px;
+
+            margin-right: 10px;
+        }
+
+
+        /* =========================
+           MUSIC BUTTON
+        ========================= */
+
+        #musicButton {
+            position: fixed;
+
+            bottom: 25px;
+            left: 25px;
+
+            width: 70px;
+            height: 70px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            padding: 0;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            background: white;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.35);
+
+            z-index: 9999;
+
+            transition: 0.2s;
+        }
+
+
+        #musicButton img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        #musicButton:hover {
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #41633e;
+
+            text-align: center;
+
+            padding: 10px;
+
+            color: rgba(255,255,255,0.5);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            body {
+                padding: 15px 8px;
+            }
+
+
+            .card {
+                border-radius: 30px;
+
+                border-width: 6px;
+            }
+
+
+            .nav {
+                flex-wrap: wrap;
+            }
+
+
+            .credit {
+                display: none;
+            }
+
+
+            .info-area {
+                grid-template-columns: 1fr;
+            }
+
+
+            .profile-image {
+                margin: 10px auto 0;
+            }
+
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+
+            .title {
+                font-size: 38px;
+            }
+
+
+            .find-me {
+                font-size: 22px;
+            }
+
+
+            .social {
+                width: 45px;
+
+                height: 45px;
+            }
+
+
+            #musicButton {
+                width: 60px;
+                height: 60px;
+
+                bottom: 15px;
+                left: 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         BACKGROUND MUSIC
+    ================================= -->
+
+    <audio id="backgroundMusic" loop>
+
+        <!--
+            PUT YOUR MUSIC FILE IN src=""
+
+            Example:
+            src="music/song.mp3"
+        -->
+
+        <source src="muse.mp3" type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- =================================
+         MUSIC ON / OFF BUTTON
+    ================================= -->
+
+    <button
+        id="musicButton"
+        onclick="toggleMusic()"
+        title="Turn music on/off"
+    >
+
+        <img
+            src="https://i.pinimg.com/736x/8b/a8/5f/8ba85f7753ce23ea6716ea842da96008.jpg"
+            alt="Music"
+        >
+
+    </button>
+
+
+    <!-- =================================
+         MAIN CARD
+    ================================= -->
+
+    <div class="card">
+
+
+        <!-- =================================
+             HEADER
+        ================================= -->
+
+        <header class="top">
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="nav">
+
+                <a href="https://youtu.be/LyqNV_PztY0?si=d0UphmcHUuFAchOZ">
+                    shh
+                </a>
+
+                <a href="https://xab.neocities.org/Hello">
+                    more
+                </a>
+
+                <a href="https://xannyranny.neocities.org/poems">
+                    poems
+                </a>
+
+                <div class="credit">
+
+                    <img
+                        src="https://pixelsafari.neocities.org/dividers/character/pokemon9.gif"
+                        alt="lol"
+                    >
+
+                </div>
+
+            </nav>
+
+
+            <!-- INFO -->
+
+            <div class="info-area">
+
+
+                <div>
+
+
+                    <!-- NAME -->
+
+                    <div class="info">
+
+                        <label>
+                            NAME:
+                        </label>
+
+                        <div class="bar">
+
+                            <span>
+                                Samrina or Xanny
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INFO 1 -->
+
+                    <div class="info">
+
+                        <label>
+                            Blah blah:
+                        </label>
+
+                        <div class="bar">
+
+                            <span>
+                                she/her/hers
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INFO 2 -->
+
+                    <div class="info">
+
+                        <label>
+                            GAY?:
+                        </label>
+
+                        <div class="bar">
+
+                            <span>
+                                Bisexual
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- PROFILE IMAGE -->
+
+                <div class="profile-image">
+
+                    <img
+                        src="https://i.pinimg.com/736x/88/b9/f9/88b9f97ce5ee292a4b9fa9b25877d862.jpg"
+                        alt="Profile picture"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================
+             MAIN CONTENT
+        ================================= -->
+
+        <main class="content">
+
+
+            <!-- LEFT SIDE -->
+
+            <section
+                class="left"
+                id="about"
+            >
+
+
+                <h1 class="title">
+                    About <span>Me!</span>
+                </h1>
+
+
+                <div class="subtitle">
+                    meow
+                </div>
+
+
+                <p class="description">
+
+                    🌱
+
+                    <strong>
+                        About me:
+                    </strong>
+
+                    Hi, I'm Samrina, also known as Xanny! I'm a 14-year-old girl who likes to read, watch pokemon, and likes to listen to music!
+                    I also write a lot of poems in my free time about basically anything.
+
+                </p>
+
+
+                <p class="description">
+
+                    🍄
+
+                    Im bisexual and i'm a girl, i like both genders and im pretty open with that. I also am an atheist and i don't believe in any religion. I take my birthday really seriously. im born in 01/22/12.
+
+                </p>
+
+
+            </section>
+
+
+            <!-- RIGHT SIDE -->
+
+            <section class="right">
+
+
+                <div class="gallery">
+
+
+                    <!-- =================================
+                         MAIN IMAGE
+                    ================================= -->
+
+                    <div class="photo main-photo">
+
+                        <img
+                            src="https://pixelsafari.neocities.org/stamps/cutepokemon.gif"
+                            alt="Main image"
+                        >
+
+                    </div>
+
+
+                    <!-- =================================
+                         SMALL IMAGE 1
+                    ================================= -->
+
+                    <div class="photo small-photo">
+
+                        <img
+                            src="https://i.pinimg.com/originals/c5/73/90/c573905ac6326829a51dfe55be8e3292.gif"
+                            alt="Gallery image 1"
+                        >
+
+                    </div>
+
+
+                    <!-- =================================
+                         SMALL IMAGE 2
+                    ================================= -->
+
+                    <div class="photo small-photo">
+
+                        <img
+                            src="https://i.pinimg.com/736x/38/04/43/3804439f40e8cf0f35bf5c95bc955772.jpg"
+                            alt="Gallery image 2"
+                        >
+
+                    </div>
+
+
+                    <!-- =================================
+                         SMALL IMAGE 3
+                    ================================= -->
+
+                    <div class="photo small-photo">
+
+                        <img
+                            src="https://i.pinimg.com/originals/b3/0a/46/b30a46fce0bc096779616ef843a60ea0.gif"
+                            alt="Gallery image 3"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+        <!-- =================================
+             DNI / BYF
+        ================================= -->
+
+        <section
+            class="extra-section"
+            id="dni"
+        >
+
+            <h2 class="dni-title">
+                My other website
+            </h2>
+
+            <p>
+
+                It was made last year and its lowk corny but i dont mind you can check it out if you want to.
+
+                <a href="https://xab.neocities.org/Hello">
+                    Click here!
+                </a>
+
+            </p>
+
+        </section>
+
+
+        <!-- =================================
+             INTERESTS
+        ================================= -->
+
+        <section
+            class="extra-section"
+            id="interests"
+        >
+
+            <h2 class="interest-title">
+                INTERESTS
+            </h2>
+
+            <p>
+
+                🎮 Games
+                &nbsp; ✦ &nbsp;
+
+                🎵 Music
+                &nbsp; ✦ &nbsp;
+
+                🎨 Art
+                &nbsp; ✦ &nbsp;
+
+                📚 Books
+
+            </p>
+
+        </section>
+
+
+        <!-- =================================
+             SOCIAL MEDIA
+        ================================= -->
+
+        <footer class="bottom">
+
+
+            <div class="socials">
+
+
+                <!-- INSTAGRAM -->
+
+                <a
+                    class="social"
+                    href="#"
+                    title="Instagram"
+                >
+                    ◎
+                </a>
+
+
+                <!-- TIKTOK -->
+
+                <a
+                    class="social"
+                    href="https://www.tiktok.com/@yapuh?_r=1&_t=ZS-98xIJy8llzt"
+                    title="Tiktok"
+                >
+                    T
+                </a>
+
+
+                <!-- SPOTIFY -->
+
+                <a
+                    class="social"
+                    href="https://open.spotify.com/user/31ivklccggtwbxx765yha2icppti?si=e0f21f01dc944c73"
+                    title="Spotify"
+                >
+                    ◆
+                </a>
+
+
+                <!-- FIND ME -->
+
+                <div class="find-me">
+
+                    <span class="arrows">
+                        ‹‹‹
+                    </span>
+
+                    find me at
+
+                </div>
+
+
+            </div>
+
+
+        </footer>
+
+
+        <!-- =================================
+             FOOTER
+        ================================= -->
+
+        <div class="footer">
+
+            <img src="https://pixelsafari.neocities.org/dividers/character/pokemon7.png"
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================
+         MUSIC JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        const music =
+            document.getElementById("backgroundMusic");
+
+
+        function toggleMusic() {
+
+            if (music.paused) {
+
+                music.play();
+
+            } else {
+
+                music.pause();
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+</html>
